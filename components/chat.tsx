@@ -37,6 +37,7 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Textarea } from "./ui/textarea";
+import { api } from "@/trpc/react";
 
 
 const IS_PREVIEW = process.env.VERCEL_ENV === "preview";
@@ -82,6 +83,8 @@ export function Chat({ id, initialMessages, className }: ChatProps) {
     },
   });
 
+  const hello = api.post.hello.useQuery({ text: "from tRPC" });
+
   function onSubmit(values: z.infer<typeof contactProfessionalFormSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
@@ -90,6 +93,7 @@ export function Chat({ id, initialMessages, className }: ChatProps) {
 
   return (
     <>
+      <div>{hello.data?.greeting}</div>
       <div className={cn("pb-[200px] pt-4 md:pt-10", className)}>
         {messages.length ? (
           <>

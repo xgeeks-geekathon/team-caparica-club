@@ -8,6 +8,9 @@ import { cn } from '@/lib/utils'
 import { TailwindIndicator } from '@/components/tailwind-indicator'
 import { Providers } from '@/components/providers'
 import { Header } from '@/components/header'
+import { TRPCReactProvider } from '@/trpc/react'
+import { cookies } from "next/headers";
+
 
 export const metadata: Metadata = {
   title: {
@@ -41,6 +44,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           fontMono.variable
         )}
       >
+        <TRPCReactProvider cookies={cookies().toString()}>
         <Toaster />
         <Providers attribute="class" defaultTheme="system" enableSystem>
           <div className="flex flex-col min-h-screen">
@@ -50,6 +54,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           </div>
           <TailwindIndicator />
         </Providers>
+        </TRPCReactProvider>
       </body>
     </html>
   )

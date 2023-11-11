@@ -25,10 +25,13 @@
     "strictNullChecks": true
   },
   "include": [
+    ".eslintrc.cjs",
     "next-env.d.ts",
     "next-auth.d.ts",
     "**/*.ts",
     "**/*.tsx",
+    "**/*.cjs",
+    "**/*.mjs",
     ".next/types/**/*.ts"
   ],
   "exclude": ["node_modules"]
