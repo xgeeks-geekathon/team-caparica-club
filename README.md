@@ -18,13 +18,13 @@
 
 ## Database
 
-We are using drizzle as database orm. The schema is defined at `server/db/schema.ts`. Make updates to it and push via:
+We are using prisma as database orm. The schema is defined at `server/db/schema.ts`. Make updates to it and push via:
 
 ```bash
 npm run db:push
 ```
 
-View the database records with the drizzler studio:
+View the database records with the studio:
 
 ```bash
 npm run db:studio

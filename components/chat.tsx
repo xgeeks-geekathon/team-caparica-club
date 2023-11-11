@@ -38,15 +38,17 @@ import {
 } from "@/components/ui/form"
 import { Textarea } from "./ui/textarea";
 import { api } from "@/trpc/react";
+import { auth } from "@/auth";
 
 
 const IS_PREVIEW = process.env.VERCEL_ENV === "preview";
 export interface ChatProps extends React.ComponentProps<"div"> {
   initialMessages?: Message[];
-  id?: string;
+  chatId?: string;
+  userId?: string;
 }
 
-export function Chat({ id, initialMessages, className }: ChatProps) {
+export function Chat({ chatId, userId, initialMessages, className }: ChatProps) {
   const [previewToken, setPreviewToken] = useLocalStorage<string | null>(
     "ai-token",
     null
@@ -60,9 +62,9 @@ export function Chat({ id, initialMessages, className }: ChatProps) {
   const { messages, append, reload, stop, isLoading, input, setInput } =
     useChat({
       initialMessages,
-      id,
+      id: chatId,
       body: {
-        id,
+        id: chatId,
         previewToken,
       },
       onResponse(response) {
@@ -83,17 +85,38 @@ export function Chat({ id, initialMessages, className }: ChatProps) {
     },
   });
 
-  const hello = api.post.hello.useQuery({ text: "from tRPC" });
+  const customerRequestMutation = api.customerRequest.create.useMutation();
+  // const customerRequestQuery = api.customerRequest.all.useQuery();
 
-  function onSubmit(values: z.infer<typeof contactProfessionalFormSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
+  const onSubmit = async (values: z.infer<typeof contactProfessionalFormSchema>) => {
     console.log(values);
+    await customerRequestMutation.mutateAsync({
+      chatId: chatId ?? '123',
+      userId: userId ?? '222',
+      // userId: '222',
+      additionalNotes: values.additionalNotes,
+    });
+    setContactProfessionalDialogOpen(false);
+
+    form.reset();
+
+    toast.success('Request send', {
+      style: {
+        borderRadius: '10px',
+        background: '#333',
+        color: '#fff',
+        fontSize: '14px'
+      },
+      iconTheme: {
+        primary: 'white',
+        secondary: 'black'
+      }
+    })
   }
 
   return (
     <>
-      <div>{hello.data?.greeting}</div>
+      <div>{'hello'}</div>
       <div className={cn("pb-[200px] pt-4 md:pt-10", className)}>
         {messages.length ? (
           <>
@@ -105,7 +128,7 @@ export function Chat({ id, initialMessages, className }: ChatProps) {
         )}
       </div>
       <ChatPanel
-        id={id}
+        id={chatId}
         isLoading={isLoading}
         stop={stop}
         append={append}
