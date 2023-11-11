@@ -6,6 +6,7 @@ import {
   bigint,
   index,
   mysqlTableCreator,
+  text,
   timestamp,
   varchar,
 } from "drizzle-orm/mysql-core";
@@ -16,7 +17,7 @@ import {
  *
  * @see https://orm.drizzle.team/docs/goodies#multi-project-schema
  */
-export const mysqlTable = mysqlTableCreator((name) => `t3-trpc-drizzler_${name}`);
+export const mysqlTable = mysqlTableCreator((name) => `advisor_${name}`);
 
 export const posts = mysqlTable(
   "post",
@@ -30,5 +31,22 @@ export const posts = mysqlTable(
   },
   (example) => ({
     nameIndex: index("name_idx").on(example.name),
+  })
+);
+
+export const customerRequest = mysqlTable(
+  "customer_request",
+  {
+    id: bigint("id", { mode: "number" }).primaryKey().autoincrement(),
+    userId: varchar('user_id', { length: 256 }).notNull(),
+    chatId: varchar('chat_id', { length: 256 }).notNull(),
+    createdAt: timestamp("created_at")
+      .default(sql`CURRENT_TIMESTAMP`)
+      .notNull(),
+    updatedAt: timestamp("updatedAt").onUpdateNow(),
+    additionalNotes: text("additional_notes"),
+  },
+  (customerRequest) => ({
+    userIndex: index("user_idx").on(customerRequest.userId),
   })
 );
