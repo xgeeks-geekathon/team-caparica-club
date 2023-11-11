@@ -146,9 +146,10 @@ export function Chat({ chatId, userId, initialMessages, className }: ChatProps) 
       >
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Share link to chat</DialogTitle>
+            <DialogTitle>Contact a Professional</DialogTitle>
             <DialogDescription>
-              Anyone with the URL will be able to view the shared chat.
+              In your name we will contact a professional to forward your request.
+              
             </DialogDescription>
           </DialogHeader>
           <Form {...form}>

@@ -22,4 +22,13 @@ model CustomerRequest {
     updatedAt DateTime @updatedAt
 
     additionalNotes String?
+    
+    progress CustomerRequestProgress @default(NotAssigned)
 }
+
+enum CustomerRequestProgress {
+    NotAssigned
+    InProgress
+    Done
+}
+// not assigned, in progress, done
