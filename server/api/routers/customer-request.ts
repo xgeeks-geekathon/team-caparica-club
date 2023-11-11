@@ -8,18 +8,20 @@ export const customRequestRouter = createTRPCRouter({
     .input(z.object({ userId: z.string().min(1), chatId: z.string().min(1), additionalNotes: z.string() }))
     .mutation(async ({ ctx, input }) => {
       console.log(`input: ${JSON.stringify(input)}`)
-      const user = await ctx.prisma.customerRequest.create({
+      const customerRequest = await ctx.prisma.customerRequest.create({
         data: {
           userId: input.userId,
           chatId: input.chatId,
           additionalNotes: input.additionalNotes
         },
       });
-      return user;
+      return customerRequest;
       
     }),
 
   all: publicProcedure.query(async ({ ctx }) => {
-    const user = await ctx.prisma.customerRequest.findMany({});
+    const requests = await ctx.prisma.customerRequest.findMany({});
+
+    return requests
   }),
 });
