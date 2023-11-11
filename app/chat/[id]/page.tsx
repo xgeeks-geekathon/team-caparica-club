@@ -42,9 +42,9 @@ export default async function ChatPage({ params }: ChatPageProps) {
     notFound()
   }
 
-  if (chat?.userId !== session?.user?.id) {
-    notFound()
-  }
+  // if (chat?.userId !== session?.user?.id) {
+  //   notFound()
+  // }
 
   return <Chat id={chat.id} initialMessages={chat.messages} />
 }
