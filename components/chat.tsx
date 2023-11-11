@@ -86,7 +86,7 @@ export function Chat({ chatId, userId, initialMessages, className }: ChatProps) 
   });
 
   const customerRequestMutation = api.customerRequest.create.useMutation();
-  // const customerRequestQuery = api.customerRequest.all.useQuery();
+  const customerRequestQuery = api.customerRequest.all.useQuery();
 
   const onSubmit = async (values: z.infer<typeof contactProfessionalFormSchema>) => {
     console.log(values);
@@ -113,6 +113,8 @@ export function Chat({ chatId, userId, initialMessages, className }: ChatProps) 
       }
     })
   }
+
+  if(!customerRequestQuery.data) return <div>404</div>
 
   return (
     <>
