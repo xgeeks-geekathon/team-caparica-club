@@ -23,15 +23,40 @@ export async function POST(req: Request) {
       status: 401
     })
   }
+  
+  if (messages.length >4) {
+    const summaryMessage = {
+      role: 'system',
+      content: "Answer last user message, summarize the conversation, thank the user and suggest to submit a request to one of our approved residency consultants for best-in-class service."
+    };
+    messages.push(summaryMessage);
+    // There are messages in the array
+    // Perform some action
+  } else {
+    // The array is empty
+    // Perform some other action
+  }
+  
 
   if (previewToken) {
     configuration.apiKey = previewToken
   }
 
+  // Define the system message
+  const systemMessage = {
+    role: 'system',
+    content: "Act as a Residency Lawyer Professional in Portugal, working with expats who are looking to relocate to Portugal. You are precise in your answers and give friendly explanations of the steps required to get Visa in Portugal also you give detailed requirements for each persons case. You must always ask one (1) follow-up question for some important details about the case, that were not yet provided about the person."
+  };
+
+  messages.unshift(systemMessage);
+
+  console.log(messages);
+
+
   const res = await openai.createChatCompletion({
-    model: 'gpt-3.5-turbo',
+    model: 'gpt-3.5-turbo-1106',
     messages,
-    temperature: 0.7,
+    temperature: 0.1,
     stream: true
   })
 
@@ -65,3 +90,8 @@ export async function POST(req: Request) {
 
   return new StreamingTextResponse(stream)
 }
+
+
+
+
+

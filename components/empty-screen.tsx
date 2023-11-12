@@ -6,38 +6,30 @@ import { IconArrowRight } from '@/components/ui/icons'
 
 const exampleMessages = [
   {
-    heading: 'Explain technical concepts',
-    message: `What is a "serverless function"?`
+    heading: 'I am EU national - do I need a visa to work in Portugal?',
+    message: `I am EU national - do I need a visa to work in Portugal?`
   },
   {
-    heading: 'Summarize an article',
-    message: 'Summarize the following article for a 2nd grader: \n'
+    heading: 'I am from Malaysia, want to be a digital nomad',
+    message: 'I am from Malaysia, want to be a digital nomad'
   },
   {
-    heading: 'Draft an email',
-    message: `Draft an email to my boss about the following: \n`
-  }
+    heading: 'What are requirements to work in Portugal as non-EU high-skilled immigrant',
+    message: 'What are requirements to work in Portugal as non-EU high-skilled immigrant'
+  },
 ]
 
 export function EmptyScreen({ setInput }: Pick<UseChatHelpers, 'setInput'>) {
   return (
-    <div className="mx-auto max-w-2xl px-4">
-      <div className="rounded-lg border bg-background p-8">
+    <div className="max-w-3xl px-4 mx-auto">
+      <div className="p-8 border rounded-lg bg-background">
         <h1 className="mb-2 text-lg font-semibold">
-          Welcome to Next.js AI Chatbot!
+          This is Your Portuguese Residency assistant for incoming DevOps Engineers.
         </h1>
-        <p className="mb-2 leading-normal text-muted-foreground">
-          This is an open source AI chatbot app template built with{' '}
-          <ExternalLink href="https://nextjs.org">Next.js</ExternalLink> and{' '}
-          <ExternalLink href="https://vercel.com/storage/kv">
-            Vercel KV
-          </ExternalLink>
-          .
-        </p>
         <p className="leading-normal text-muted-foreground">
-          You can start a conversation here or try the following examples:
+          What is your situation and what do you need help with?
         </p>
-        <div className="mt-4 flex flex-col items-start space-y-2">
+        <div className="flex flex-col items-start mt-4 space-y-2">
           {exampleMessages.map((message, index) => (
             <Button
               key={index}
