@@ -46,9 +46,10 @@ export interface ChatProps extends React.ComponentProps<"div"> {
   initialMessages?: Message[];
   chatId?: string;
   userId?: string;
+  hidePanel?: boolean;
 }
 
-export function Chat({ chatId, userId, initialMessages, className }: ChatProps) {
+export function Chat({ chatId, userId, initialMessages, className, hidePanel = false }: ChatProps) {
   const [previewToken, setPreviewToken] = useLocalStorage<string | null>(
     "ai-token",
     null
@@ -128,7 +129,7 @@ export function Chat({ chatId, userId, initialMessages, className }: ChatProps) 
           <EmptyScreen setInput={setInput} />
         )}
       </div>
-      <ChatPanel
+      {hidePanel ? '' : <ChatPanel
         id={chatId}
         isLoading={isLoading}
         stop={stop}
@@ -139,7 +140,7 @@ export function Chat({ chatId, userId, initialMessages, className }: ChatProps) 
         setInput={setInput}
         contactProfessionalDialogOpen={contactProfessionalDialogOpen}
         setContactProfessionalDialogOpen={setContactProfessionalDialogOpen}
-      />
+      />}
 
       <Dialog
         open={contactProfessionalDialogOpen}

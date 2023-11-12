@@ -28,7 +28,7 @@ console.log("test1",customerRequestQuery.data?.[0].progress)
               <td>
                 {req.userId}
               </td> 
-              <td><Link href={`/chat/${req.chatId}`}>{req.chatId}</Link></td>
+              <td><Link href={`/chat-summary/${req.chatId}`}>{req.chatId}</Link></td>
 
               <td>
                 {req.progress === CustomerRequestProgress.NotAssigned && 'Not Assigned'}
