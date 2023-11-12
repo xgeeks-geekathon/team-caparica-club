@@ -10,7 +10,7 @@ import UserCard from './UserCard';
 
 
 
-export default  function ClientPage() {
+export default async function ClientPage() {
     const [selectedComponent, setSelectedComponent] = useState('home');
     
 
@@ -19,9 +19,9 @@ export default  function ClientPage() {
     };
    
     return (
-        <div className="h-screen w-full flex flex-col lg:flex-row">
-            <nav className="w-full lg:w-64 bg-gray-800 text-white p-5">
-            <a className="text-2xl mb-5" href="/">Dashboard</a>
+        <div className="flex flex-col w-full h-screen lg:flex-row">
+            <nav className="w-full p-5 text-white bg-gray-800 lg:w-64">
+            <a className="mb-5 text-2xl" href="/">Dashboard</a>
                 <ul className="space-y-2">
                     <li>
                         <button className="flex items-center gap-3 py-2" >

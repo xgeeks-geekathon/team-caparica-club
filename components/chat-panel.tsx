@@ -63,14 +63,14 @@ export function ChatPanel({
           ) : (
             messages?.length > 0 && (
               <div>
-                <Button
+                {messages?.length > 4 && <Button
                   variant="outline"
                   onClick={() => clickedContactProfessional()}
                   className="bg-background"
                 >
                   <IconUser className="mr-2" />
                   Contact Residency Professional
-                </Button>
+                </Button>}
                 <Button
                   variant="outline"
                   onClick={() => reload()}

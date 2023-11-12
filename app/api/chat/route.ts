@@ -54,33 +54,26 @@ export async function POST(req: Request) {
     })
   }
 
-  // const stream = OpenAIStream(res, {
-  //   async onCompletion(completion) {
-  //     const title = json.messages[0].content.substring(0, 100)
-  //     const id = json.id ?? nanoid()
-  //     const createdAt = Date.now()
-  //     const path = `/chat/${id}`
-  //     const payload = {
-  //       id,
-  //       title,
-  //       userId,
-  //       createdAt,
-  //       path,
-  //       messages: [
-  //         ...messages,
-  //         {
-  //           content: completion,
-  //           role: 'assistant'
-  //         }
-  //       ]
-  //     }
-  //     await kv.hmset(`chat:${id}`, payload)
-  //     await kv.zadd(`user:chat:${userId}`, {
-  //       score: createdAt,
-  //       member: `chat:${id}`
-  //     })
-  //   }
-  // })
+  const normalPrompt = `Use the following pieces of context to answer the question at the end. If you don't know the answer, just say that you don't know, don't try to make up an answer. 
+  Act as a Residency Lawyer Professional in Portugal, working with expats who are looking to relocate to Portugal. You are precise in your answers and give friendly explanations of the steps required to get Visa in Portugal also you give detailed requirements for each persons case. You must always ask 1 (one) and more follow-up question.
+  ----------
+  CONTEXT: {context}
+  ----------
+  CHAT HISTORY: {chatHistory}
+  ----------
+  QUESTION: {question}
+  ----------
+  Helpful Answer:`
+
+  const finalPrompt = `Answer user's question. Summarize the chat history and suggest to reach out to our qualified accountants
+  ----------
+  CONTEXT: {context}
+  ----------
+  CHAT HISTORY: {chatHistory}
+  ----------
+  QUESTION: {question}
+  ----------
+  Helpful Answer:`
 
   const questionPrompt = PromptTemplate.fromTemplate(
     `Use the following pieces of context to answer the question at the end. If you don't know the answer, just say that you don't know, don't try to make up an answer. 
