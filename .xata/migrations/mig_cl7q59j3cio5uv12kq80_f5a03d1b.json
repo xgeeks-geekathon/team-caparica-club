@@ -1,0 +1,12 @@
+{
+  "id": "mig_cl7q59j3cio5uv12kq80",
+  "parentID": "mig_cl7mudqr00th1dr643t0",
+  "checksum": "1:f5a03d1b548b99f7ccdda54c4002dd77b94761b012c751dc19d611e0881b5ba1",
+  "operations": [
+    {
+      "removeTable": {
+        "table": "vectors_tt"
+      }
+    }
+  ]
+}

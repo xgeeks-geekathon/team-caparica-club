@@ -23,7 +23,7 @@ model CustomerRequest {
 
     additionalNotes String?
     
-    progress CustomerRequestProgress @default(NotAssigned)
+    progress CustomerRequestProgress
 }
 
 enum CustomerRequestProgress {

@@ -1,0 +1,6 @@
+{
+  "databaseURL": "https://Vytautas-Savickas-s-workspace-11ie3b.eu-central-1.xata.sh/db/great_qna",
+  "codegen": {
+    "output": "src/xata.ts"
+  }
+}

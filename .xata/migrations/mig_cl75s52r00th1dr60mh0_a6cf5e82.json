@@ -1,0 +1,12 @@
+{
+  "id": "mig_cl75s52r00th1dr60mh0",
+  "parentID": "mig_cl75me2l3lh3v7vbdplg",
+  "checksum": "1:a6cf5e827141cc3f858c66207f12cc80519f95511382a6dd8c0dfed228d805fa",
+  "operations": [
+    {
+      "addTable": {
+        "table": "vectors"
+      }
+    }
+  ]
+}

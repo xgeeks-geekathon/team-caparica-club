@@ -1,0 +1,16 @@
+{
+  "id": "mig_cl75s6b3cio5uv12j5mg",
+  "parentID": "mig_cl75s52r00th1dr60mh0",
+  "checksum": "1:0c24b03f7fd8cd98a36f88ed1039be6661d4a33f727e3ea0b8d8fa0d863c8574",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "source",
+          "type": "string"
+        },
+        "table": "vectors"
+      }
+    }
+  ]
+}
