@@ -18,6 +18,12 @@
 
 ## Database
 
+So you will need to point to a working mysql database in .env like:
+
+```txt
+DATABASE_URL='mysql://advisor:PASSWORd@HOST:3306/advisor?ssl={"rejectUnauthorized":false}'
+```
+
 We are using prisma as database orm. The schema is defined at `server/db/schema.ts`. Make updates to it and push via:
 
 ```bash
