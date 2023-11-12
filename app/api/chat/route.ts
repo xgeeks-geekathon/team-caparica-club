@@ -23,8 +23,8 @@ export async function POST(req: Request) {
       status: 401
     })
   }
-  
-  if (messages.length >4) {
+
+  if (messages.length > 4) {
     const summaryMessage = {
       role: 'system',
       content: "Answer last user message, summarize the conversation, thank the user and suggest to submit a request to one of our approved residency consultants for best-in-class service."
@@ -36,7 +36,7 @@ export async function POST(req: Request) {
     // The array is empty
     // Perform some other action
   }
-  
+
 
   if (previewToken) {
     configuration.apiKey = previewToken

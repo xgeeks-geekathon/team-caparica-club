@@ -1,6 +1,7 @@
 import { z } from "zod";
 
 import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
+import { CustomerRequestProgress } from "@prisma/client";
 
 export const customRequestRouter = createTRPCRouter({
 
@@ -12,7 +13,8 @@ export const customRequestRouter = createTRPCRouter({
         data: {
           userId: input.userId,
           chatId: input.chatId,
-          additionalNotes: input.additionalNotes
+          additionalNotes: input.additionalNotes,
+          progress: CustomerRequestProgress.NotAssigned,
         },
       });
       return customerRequest;
