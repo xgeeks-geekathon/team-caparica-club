@@ -17,7 +17,7 @@ export default function ProfessionalPage() {
     return (
         <div className="h-screen w-full flex flex-col lg:flex-row">
             <nav className="w-full lg:w-64 bg-gray-800 text-white p-5">
-                <h1 className="text-2xl mb-5">Dashboard</h1>
+                <a className="text-2xl mb-5" href="/">Dashboard</a>
                 <ul className="space-y-2">
                     <li>
                         <button className="flex items-center gap-3 py-2" >

@@ -1,10 +1,12 @@
 import { api } from "@/trpc/react";
+import Link from "next/link";
+
 
 function ProfessionalHome() {
 
   const customerRequestQuery = api.customerRequest.all.useQuery()
- const CustomerRequestProgressQuery = api.customerRequest.all.useQuery()
-  console.log("test1:", customerRequestQuery.data)
+  const CustomerRequestProgress = api.customerRequest.create.useMutation()
+console.log("test1",customerRequestQuery.data?.[0].progress)
   if (!customerRequestQuery.data) return <div>Error 404</div>
 
   return (
@@ -12,23 +14,23 @@ function ProfessionalHome() {
       <table className="table h-full w-full">
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Created At</th>
-            <th>Status</th>
+            <th>UserId</th>
+            <th>ChatId</th>
+            <th>Progress</th>
+            <th>Notes</th>
           </tr>
         </thead>
         <tbody className="text-center">
           {customerRequestQuery.data?.map((req, index) => (
             <tr key={index}>
               <td>
-               {req.userId}
+                {req.userId}
               </td>
-              <td>{req.chatId}</td>
-              <td>20 NOV 2023</td>
-              <td></td>
+              <td><Link href={`/chat/${req.chatId}`}>{req.chatId}</Link></td>
+              <td>{req.progress}</td>
+              <td>{req.additionalNotes}</td>
             </tr>
-              ))}
+          ))}
         </tbody>
       </table>
     </div>

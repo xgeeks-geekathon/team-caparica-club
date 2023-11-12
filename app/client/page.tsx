@@ -1,19 +1,13 @@
 
 "use client"
 
-import { auth } from '@/auth'
+
 import { IconMessage, IconUser } from "@/components/ui/icons"
 import { useState } from "react"
+
 import UserCard from './UserCard';
 
-const data = [
-    {
-        userId: 'John',
-        chatId: "",
-        status: 'In process'
-    },
 
-];
 
 
 export default  function ClientPage() {
@@ -27,7 +21,7 @@ export default  function ClientPage() {
     return (
         <div className="h-screen w-full flex flex-col lg:flex-row">
             <nav className="w-full lg:w-64 bg-gray-800 text-white p-5">
-                <h1 className="text-2xl mb-5">Dashboard</h1>
+            <a className="text-2xl mb-5" href="/">Dashboard</a>
                 <ul className="space-y-2">
                     <li>
                         <button className="flex items-center gap-3 py-2" >
@@ -50,6 +44,7 @@ export default  function ClientPage() {
             <main className="flex-1">
              
                 <UserCard />
+  
             </main>
 
         </div>
