@@ -28,7 +28,7 @@ You will need to use the environment variables [defined in `.env.example`](.env.
 
 1. Install Vercel CLI: `npm i -g vercel`
 2. Link local instance with Vercel and GitHub accounts (creates `.vercel` directory): `vercel link`
-3. Download your environment variables: `vercel env pull`
+3. Download your environment variables: `vercel env pull` 
 
 ```bash
 npm install
