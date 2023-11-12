@@ -17,9 +17,7 @@ export const env = createEnv({
     NODE_ENV: z
       .enum(["development", "test", "production"])
       .default("development"),
-    
-    LAMBDA_URL: z.string(),
-  },
+      },
 
   /**
    * Specify your client-side environment variables schema here. This way you can ensure the app
@@ -38,7 +36,6 @@ export const env = createEnv({
     DATABASE_URL: process.env.DATABASE_URL,
     NODE_ENV: process.env.NODE_ENV,
     // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
-    LAMBDA_URL: process.env.LAMBDA_URL,
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially
