@@ -18,11 +18,17 @@ export const customRequestRouter = createTRPCRouter({
         },
       });
       return customerRequest;
-      
+
     }),
 
   all: publicProcedure.query(async ({ ctx }) => {
     const requests = await ctx.prisma.customerRequest.findMany({});
+
+    return requests
+  }),
+
+  allFromUserId: publicProcedure.input(z.object({ userId: z.string() })).query(async ({ ctx, input }) => {
+    const requests = await ctx.prisma.customerRequest.findMany({ where: { userId: input.userId } });
 
     return requests
   }),

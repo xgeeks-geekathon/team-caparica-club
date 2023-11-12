@@ -19,7 +19,7 @@ export default async function UserCard() {
   //   // Add logic to save the status to your backend or perform other actions
   // };
 
-  await api.customerRequest.all.query()
+  const userRequests = await api.customerRequest.allFromUserId.query({userId: session?.user?.id.toString()})
 
   return (
     <div className="flex h-screen bg-gray-800">
@@ -32,6 +32,7 @@ export default async function UserCard() {
               <Label htmlFor="username"> {session?.user?.id}</Label>
             </div>
           </div>
+          {userRequests.map(request => <div>{request.userId}</div>)}
           {/* <div className="space-y-2">
             <Label htmlFor="email">Email : </Label>
             <Label htmlFor="username"> {session.user.email}</Label>
