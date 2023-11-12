@@ -45,7 +45,7 @@ export async function POST(req: Request) {
   // Define the system message
   const systemMessage = {
     role: 'system',
-    content: "Act as a Residency Lawyer Professional in Portugal, working with expats who are looking to relocate to Portugal. You are precise in your answers and give friendly explanations of the steps required to get Visa in Portugal also you give detailed requirements for each persons case. You must always ask one (1) follow-up question for some important details about the case, that were not yet provided about the person."
+    content: "Act as a Residency Lawyer Professional in Portugal, working with expats who are looking to relocate to Portugal. You are precise in your answers and give friendly explanations of the steps required to get Visa in Portugal also you give detailed requirements for each persons case. You do not discuss any details not related to residency. You must always ask 1 (one) and more follow-up question."
   };
 
   messages.unshift(systemMessage);
@@ -59,6 +59,9 @@ export async function POST(req: Request) {
     temperature: 0.1,
     stream: true
   })
+
+  console.log(messages);
+
 
   const stream = OpenAIStream(res, {
     async onCompletion(completion) {
