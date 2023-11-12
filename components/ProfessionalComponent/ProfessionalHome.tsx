@@ -27,7 +27,7 @@ console.log("test1",customerRequestQuery.data?.[0].progress)
             <tr key={index}>
               <td>
                 {req.userId}
-              </td>
+              </td> 
               <td><Link href={`/chat/${req.chatId}`}>{req.chatId}</Link></td>
 
               <td>
