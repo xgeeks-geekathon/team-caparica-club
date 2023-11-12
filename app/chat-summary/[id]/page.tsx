@@ -49,5 +49,5 @@ export default async function ChatPage({ params }: ChatPageProps) {
   //   notFound()
   // }
 
-  return <Chat hidden={true} chatId={chat.id} initialMessages={chat.messages} userId={session?.user?.id.toString()}  />
+  return <Chat hidePanel={true} chatId={chat.id} initialMessages={chat.messages} userId={session?.user?.id.toString()}  />
 }
